@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- React and React DOM CDN Links which works with Internet .. Here if the internet goes down
+     this CDN links won't work to overcome this we need to install the libraries
+     Commands for installing libraries npm install react@18 react-dom@18 --save
+      npm install @babel/standalone --save-->
+    <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
+
+    <!-- Babel CDN Link which works with internet -->
+     <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>    -->
+
+     <!-- With CDN Links -->
+     <!-- <script type="text/babel">
+        ReactDOM.render("Welcome to React JS with CDN Links",document.getElementById("root"))
+     </script> -->
+
+      <!-- After installing the libraries -->
+       <script src="./node_modules/react/umd/react.development.js"></script>
+       <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+       <script src="./node_modules/@babel/standalone/babel.js"></script>
+
+       <script type="text/babel">
+         const root = ReactDOM.createRoot(document.getElementById("root"))
+         root.render("Welcome to React JS by installing the libraries");
+       </script>
+</head>
+<body>
+    <noscript>Please enable the Javascript on your browser</noscript>
+    <h1>Hello React ............!</h1>
+    <div id="root"></div>
+</body>
+</html>
