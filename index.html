@@ -27,6 +27,54 @@
        <script type="text/babel">
          const root = ReactDOM.createRoot(document.getElementById("root"))
          root.render("Welcome to React JS by installing the libraries");
+         
+         Product();
+         /* This is function declaration where it allows hoisting , means it can be 
+         invoked at anywhere .*/
+         function Product(){
+          document.write("Function Declaration Product Method <br>");
+         }
+
+        /* Here in Function while using var hoisting is not allowed .Hoisting means 
+        if the method is declared it cannot be called above the method declared it can be used under
+        the method which is declared only. */
+         var welcome = function(){//Function Expression
+          document.write("Welcome function from function Expression<br>");
+         }
+          welcome();
+          /* Method with parameters where id,name,age are formal arguments and 301,"Aleti" etc 
+          all are actual arguments. */
+          FunctionWithParameters(301,"Sridhar Reddy Aleti",25)
+         function FunctionWithParameters(id,name,age){
+          document.write(`Id of the student:${id}<br>`);
+          document.write(`Name of the Student:${name}<br>`);
+          document.write(`Age of the Student:${age}<br>`);
+         }
+
+         /* This is the Rest Parameters method it means we can pass any number
+         of parameters and acts as an array. We use this Rest Parameters
+         because using too many parameters in function leads to injection of attacks.*/
+          function DetailsProduct(...details){
+            let [id,product,price,present] = details;//Array Destructuring
+            document.write(`<h4>Id:${id}<br>`);
+            document.write(`Product : ${product}<br>`);
+            document.write(`Price:${price}<br>`);
+            document.write(`IsPresentOrNot:${present}</h4><br>`);
+          }
+          DetailsProduct(1,"TV",20000,true);
+
+          function Ananymous(success){
+            success();
+          }
+          Ananymous(function(){
+            document.write("Test Ananymous function<br>");
+          });
+          /* This is the ananymous function it means the function which doesn't having functionName.
+          Syntax for it is (function(){})(); This ananymous function
+          should called immediately. */
+          (function(){
+            document.write("Immediate Invoking Function Expression");
+          })();
        </script>
 </head>
 <body>
