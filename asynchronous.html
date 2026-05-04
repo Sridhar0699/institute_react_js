@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        async function GetData() {
+            return await [{
+              Name:'TV'
+            },{
+              Name:"COOLER"
+            }]
+          }
+          GetData().then(function(response){
+            document.write(response)
+          }).catch(function(response){
+            document.write(response)
+          }).finally(function(){
+            document.write('Function Ends')
+          })
+
+          async function GetProducts() {
+            return await [{Name:"TV"},{Name:"Cooler"}]            
+          }
+          async function GetEmployees() {
+            return await [{Name:"Raj"},{Name:"Nikky"}]
+          }
+          Promise.all([GetProducts(),GetEmployees()])
+                                              .then(function(products,employees){
+                                                console.log(products);
+                                                console.log(employees)
+                                              });
+
+        fetch('https://dummyjson.com/products')
+                    .then(async response=>{
+                      return await response.json()
+                    })
+                    .then(product=>{
+                      product.products.map(prd=>{
+                        document.write(`<div>Title:${prd.warrantyInformation}</div>`)
+                      })
+                    });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

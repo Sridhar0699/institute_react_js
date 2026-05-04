@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        function Level1(){
+            document.querySelector('p').innerHTML = "Volume Increased by 20%"
+        }
+        function Level2(){
+            document.querySelector('p').innerHTML = "Volume Increased by 40%"
+        }
+        function Level3(){
+            document.querySelector('p').innerHTML = "Volume Full"
+        }
+        /* Debouncing */
+        var l1,l2,l3
+        function Increase(){
+            l1 = setTimeout(Level1, 4000);
+            l2 = setTimeout(Level2, 8000);
+            l3 = setTimeout(Level3, 12000);
+        }
+
+        function Cancel(){
+            clearTimeout(l2);
+        }
+
+        /* Throttling */
+        function Clock(){
+            var now = new Date();
+            document.querySelector('div').innerHTML = now.toLocaleTimeString();
+        }
+        var thread;
+        function BodyCall(){
+            thread = setInterval(Clock,1000)
+        }
+        function PauseTime(){
+            clearInterval(thread)
+        }
+        /* Function Call Stack Priority Wise */
+        function CallDemo(){
+            setTimeout(function(){
+                console.log('Macro Task')//3rd Priority
+            },0);
+            console.log('Normal Task'); // 1st priority
+            const obj = new Promise(function(resolve,reject){
+                resolve('Micro Task') // 2nd Priority
+            });
+            obj.then(response=>{
+                console.log(response)
+            })
+        }
+        CallDemo()
+    </script>
+</head>
+<body onload="BodyCall()">
+    <button onclick="Increase()">Increase</button>
+    <button onclick="Cancel()">Cancel</button>
+    <p></p>
+    <div></div>
+    <button onclick="PauseTime()">Pause</button>
+</body>
+</html>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <!-- React and React DOM CDN Links which works with Internet .. Here if the internet goes down
-     this CDN links won't work to overcome this we need to install the libraries
+     this CDN links won't work to overcome this we need to install the libraries.
      Commands for installing libraries npm install react@18 react-dom@18 --save
       npm install @babel/standalone --save-->
     <!-- <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -22,13 +22,15 @@
       <!-- After installing the libraries -->
        <script src="./node_modules/react/umd/react.development.js"></script>
        <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+       <!-- Where babel is the Javascript Compiler -->
        <script src="./node_modules/@babel/standalone/babel.js"></script>
 
        <script type="text/babel">
          const root = ReactDOM.createRoot(document.getElementById("root"))
          root.render("Welcome to React JS by installing the libraries");
-         
-         Product();
+          </script>
+        <script>
+           Product();
          /* This is function declaration where it allows hoisting , means it can be 
          invoked at anywhere .*/
          function Product(){
@@ -41,7 +43,12 @@
          var welcome = function(){//Function Expression
           document.write("Welcome function from function Expression<br>");
          }
-          welcome();
+         
+         //Overriding the welcome function.
+          welcome = function(){
+            document.write("Overriding the Welcome function.<br>")
+          }
+           welcome();
           /* Method with parameters where id,name,age are formal arguments and 301,"Aleti" etc 
           all are actual arguments. */
           FunctionWithParameters(301,"Sridhar Reddy Aleti",25)
@@ -51,8 +58,8 @@
           document.write(`Age of the Student:${age}<br>`);
          }
 
-         /* This is the Rest Parameters method it means we can pass any number
-         of parameters and acts as an array. We use this Rest Parameters
+         /* This is the Rest Parameters method ,it means we can pass any number
+         of parameters and it acts as an array. We use this Rest Parameters
          because using too many parameters in function leads to injection of attacks.*/
           function DetailsProduct(...details){
             let [id,product,price,present] = details;//Array Destructuring
@@ -71,15 +78,34 @@
           });
           /* This is the ananymous function it means the function which doesn't having functionName.
           Syntax for it is (function(){})(); This ananymous function
-          should called immediately. */
+          should invoked immediately. */
           (function(){
-            document.write("Immediate Invoking Function Expression");
+            document.write("Immediate Invoking Function Expression<br>");
           })();
-       </script>
+
+          function HelloFunction(){
+            return "Hello Function"
+          }
+          function TestFunction(){
+            document.getElementById("root").innerHTML = HelloFunction();
+          }
+          let message = HelloFunction();
+          document.write(message+"<br>");
+          /* Passing the default values to the parameters.
+          Here x=10 is the default i passed but while invoking i sent as x=50
+          then the x value become 50 not 10. */
+          function SumOfNumbers(x=10,y=10){
+            document.write(`Sum of Numbers is :${x+y}`)
+          }
+          SumOfNumbers(50)
+        </script>
+
+      
 </head>
 <body>
     <noscript>Please enable the Javascript on your browser</noscript>
     <h1>Hello React ............!</h1>
     <div id="root"></div>
+    <button onclick="TestFunction()">Click Me</button>
 </body>
 </html>
